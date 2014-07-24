@@ -1,50 +1,50 @@
 var gulp = require('gulp'),
-    gutil = require('gulp-util'),
-    livereload = require('gulp-livereload'),
-    spawn = require('child_process').spawn;
-
-var node, lr;
+    logger = require('morgan'),
+    browserSync = require('browser-sync'),
+    reload = browserSync.reload;
 
 /**
  * $ gulp server
- * description: launch the server. If there's a server already running, kill it.
+ * description: start the server
  */
 
 gulp.task('server', function() {
-  if (node) {
-    node.kill();
-    gutil.log('[node] changes detected')
-  }
+  browserSync.init({
 
-  node = spawn('node', ['server.js'], {stdio: 'inherit'})
+    server: {
+      // Starts the server in the public folder
+      baseDir: 'public',
 
-  node.on('close', function (code) {
-    if (code === 8) {
-      gutil.log('Error detected, waiting for changes...');
-    }
-  });
+      // shows you what files are people requesting from your server
+      middleware: logger('dev')
+    },
+
+    // who all is connecting to your server?
+    logConnections: true,
+
+    // Set this to false if you want to remove the pesky popup
+    notify: true,
+
+    // Set this to true if you want multiple instances of your app
+    // to mirror your commands
+    ghostMode: false,
+
+    // Want to show your creation to your friends?
+    // Uncomment the following line and give them the tunnel url
+    // that appears in your terminal
+
+    //tunnel: true,
+
+    // Automatically open your site in your browser
+    open: true,
+
+
+  })
 })
 
 /**
  * $ gulp
- * description: start the development environment
+ * description: start the server
  */
 
-gulp.task('default', ['server'], function() {
-  lr = livereload(),
-
-  gulp.watch('./public/**').on('changed', function(file) {
-    lr.changed(file.path)
-  })
-
-  gulp.watch(['./server.js'], ['server'])
-})
-
-// clean up if an error goes unhandled
-process.on('exit', function() {
-  if (node) {
-    gutil.log('[node] killing server')
-    node.kill()
-  }
-})
-
+gulp.task('default', ['server'])
