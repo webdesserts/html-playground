@@ -1,6 +1,6 @@
 @import 'normalize.css';
 
-body {
+html {
   font-size: 18px;
 }
 
@@ -9,7 +9,4 @@ body {
   max-width: 800px;
 }
 
-.content {
-  margin-top: 20px;
-  padding: 20px 5%;
-}
+body { padding: 40px 5%; }
