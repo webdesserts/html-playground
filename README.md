@@ -13,5 +13,5 @@ cd html-playground
 gulp
 ```
 
-This will start a standard static server at `localhost:8080`.
+This will start a standard static server at `localhost:3000`.
 
