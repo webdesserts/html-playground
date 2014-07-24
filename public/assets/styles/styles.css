@@ -1,12 +1,13 @@
 @import 'normalize.css';
 
-html {
-  font-size: 18px;
-}
+/* Set the font size of the entire page */
+html { font-size: 18px; }
 
+/* Make sure everything's not so cramped  */
+body { padding: 40px 5%; }
+
+/* This class ensures your content is centered on your page */
 .container {
   margin: 0 auto;
   max-width: 800px;
 }
-
-body { padding: 40px 5%; }
