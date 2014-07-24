@@ -10,6 +10,8 @@ var gulp = require('gulp'),
 
 gulp.task('server', function() {
   browserSync.init({
+    // reload things in your public folder when they're changed
+    files: 'public/**/*',
 
     server: {
       // Starts the server in the public folder
@@ -36,9 +38,7 @@ gulp.task('server', function() {
     //tunnel: true,
 
     // Automatically open your site in your browser
-    open: true,
-
-
+    open: true
   })
 })
 
