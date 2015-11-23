@@ -1,4 +1,4 @@
-@import 'normalize.css';
+@import 'vendor/normalize.css';
 
 /* Set the font size of the entire page */
 html { font-size: 18px; }

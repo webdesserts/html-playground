@@ -1,9 +1,8 @@
 {
   "name": "html-playground",
   "version": "0.2.1",
-  "main": "server.js",
   "scripts": {
-    "start": "node server"
+    "start": "gulp"
   },
   "engines": {
     "node": "^0.10"
